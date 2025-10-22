@@ -1,0 +1,38 @@
+ধ্রুবক { db, setup } = require("../db.bnl");
+
+ধ্রুবক redirect = (req, res, message, redirect_url) => {
+    যদি (req.xhr) {
+        res.status(203).json({ message, redirect: redirect_url });
+    } নাহলে {
+        res.redirect(redirect_url);
+    }
+}
+
+অসমলয় ফাংশন adminAuth(req, res, next) {
+    res.locals = res.locals || {};
+    res.locals.url_path = req.path.split('/');
+    const pathname = req.path;
+    const cookies = req?.cookies || {};
+    const userId = cookies?.user;
+
+    যদি(userId){
+        if(!pathname.startsWith('/admin')){
+            ফেরত redirect(req, res, 'Already logged in', '/admin/dashboard');
+        }
+        ধ্রুবক result = অপেক্ষা db.query("SELECT id, name, email, status, created_at FROM admins WHERE id = ? AND status = ?", [userId, 'active']);
+        যদি (!result.rows.length){
+            res.clearCookie("user", { path: "/" }).send("cleared");
+            ফেরত redirect(req, res, 'Invalid session, please login again', '/');
+        }
+        ধ্রুবক user = result.rows[0];
+        req.user = user;
+        res.locals.auth_user = user;
+    }else{
+        যদি(pathname.startsWith('/admin')){
+            ফেরত redirect(req, res, 'Please login first', '/');
+        }
+    }
+    next();
+}
+
+module.exports = adminAuth;

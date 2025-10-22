@@ -1,0 +1,29 @@
+ধ্রুবক { db, setup } = require("../db.bnl");
+
+ফাংশন loginPage(req, res) {
+    res.render('index', {
+        title: 'Admin Login', 
+    });
+}
+
+অসমলয় ফাংশন loginSubmit(req, res, next) {
+    ধ্রুবক data = req.body;
+    ধ্রুবক result = অপেক্ষা db.query("SELECT * FROM admins WHERE email = ? AND password = ?", [data.email, data.password]);
+    যদি (!result.rows.length){
+        ফেরত res.status(404).json({
+            message: 'Invalid credentials'
+        });
+    }
+    ধ্রুবক user = result.rows[0];
+    res.cookie("user", user.id, { httpOnly: true, sameSite: "Lax", maxAge: 7*24*60*60*1000 });
+
+    res.status(200).json({
+        message: 'Login successful',
+        redirect: '/admin/dashboard'
+    });
+};
+
+module.exports = {
+    loginPage,
+    loginSubmit
+};

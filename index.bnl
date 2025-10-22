@@ -1,0 +1,30 @@
+ধ্রুবক routeon = require('route-on');
+ধ্রুবক cookies = require("route-on-cookies");
+ধ্রুবক path = require('path');
+ধ্রুবক app = routeon();
+ধ্রুবক { db, setup } = require("./db.bnl");
+ধ্রুবক adminAuth = require("./middleware/auth.middleware.bnl");
+ধ্রুবক { loginPage, loginSubmit } = require("./routes/login.bnl");
+ধ্রুবক { dashboardPage } = require("./routes/admin/dashboard.bnl");
+ধ্রুবক { logout } = require("./routes/admin/logout.bnl");
+
+app.use(routeon.bodyParser.json());
+app.use(routeon.bodyParser.urlencoded());
+
+app.set('view engine', 'bhtml');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(routeon.serveStatic(path.join(__dirname, 'public')));
+app.use(cookies.cookieParser("ZGZvZ2hqaXVzZDlmODdoeWZnNjVmZzRoNjVlcnR5"));
+
+setup().then(() => { });
+
+// Routes
+app.get('/', adminAuth, loginPage);
+app.post('/login', adminAuth, loginSubmit);
+app.get('/admin/dashboard', adminAuth, dashboardPage);
+app.get('/admin/logout', adminAuth, logout);
+
+app.listen(3000, () => {
+    লিখুন('RouteOn server is running on http://localhost:3000');
+});

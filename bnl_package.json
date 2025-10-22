@@ -1,0 +1,16 @@
+{
+  "name": "bnlang-simple-admin-panel",
+  "version": "1.0.0",
+  "description": "A simple admin panel built with Bnlang",
+  "scripts": {
+    "start": "bnl index.bnl"
+  },
+  "keywords": ["bnlang", "admin panel", "web application"],
+  "author": "Mamun",
+  "license": "MIT",
+  "dependencies": {
+    "route-on": "1.0.0",
+    "route-on-cookies": "1.0.0",
+    "bnlang-sqlite": "1.0.1"
+  }
+}

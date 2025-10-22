@@ -1,0 +1,36 @@
+"use strict";
+
+ধ্রুবক sqlite = require("bnlang-sqlite");
+
+// Create or connect to the SQLite database file
+ধ্রুবক db = sqlite.createConnection({ file: "data.sqlite" });
+
+অসমলয় ফাংশন setup() {
+  // Connect to the database
+  অপেক্ষা db.connect();
+
+  // Create the admins table if it doesn't exist
+  অপেক্ষা db.query(`
+    CREATE TABLE IF NOT EXISTS admins (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT NOT NULL UNIQUE,
+      email TEXT UNIQUE,
+      password TEXT,
+      status TEXT NOT NULL DEFAULT 'active',
+      created_at TEXT NOT NULL DEFAULT (datetime('now')),
+      updated_at TEXT
+    )
+  `);
+
+  // Insert initial admin if none exists
+  ধ্রুবক existingAdmins = অপেক্ষা db.query(`SELECT COUNT(*) as count FROM admins`);
+  যদি (existingAdmins.rows[0].count === 0) {
+    অপেক্ষা db.query(
+      `INSERT INTO admins (name, email, password, status) VALUES (?, ?, ?, ?)`,
+      ["Super Admin", "admin@example.com", "admin123", "active"]
+    );
+    লিখুন("Initial admin created: admin@example.com / admin123");
+  }
+}
+
+module.exports = { db, setup };

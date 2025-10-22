@@ -1,0 +1,213 @@
+:root{
+    --primary-color:#444444;
+    --primary-color-hover:#353535;
+}
+.pagination-loading {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-notfound {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination-notfound span {
+    font-size: 24px;
+    color: gray;
+}
+
+.admin_thumble_upload {
+    display: block;
+    padding: 10px;
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+}
+
+.attachment_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.attachment_list li {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #cecece;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.attachment_list li a {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: block;
+    color: #830000;
+    font-size: 15px;
+}
+
+.pull-right {
+    float: right;
+}
+
+.attachment_list_img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.multi-search-pan {
+    display: block;
+    width: 100%;
+    min-height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #d2d6de;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+}
+
+.multi-search-label {
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    margin: 4px;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.multi-search-label>a {
+    color: #fff;
+    display: block;
+}
+
+.multi-search-input>input {
+    border: none;
+    padding: 0;
+    height: 26px;
+    outline: none;
+}
+
+.multi-search-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #d2d6de;
+}
+
+.multi-search-list>li {
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.2s;
+}
+
+.multi-search-list>li:hover {
+    background-color: #ededed;
+}
+
+.multi-search[data-search="false"] .multi-search-list {
+    display: none;
+}
+
+.card-warning.card-outline {
+    border-top: 3px solid var(--primary-color);
+}
+.badge-warning {
+    color: #fff;
+    background-color: var(--primary-color);
+}
+
+.single-search {
+    position: relative;
+}
+
+.single-search[data-loading="false"] .single-search-loader {
+    display: none;
+}
+
+.single-search[data-search="false"] .single-search-list {
+    display: none;
+}
+
+.single-search-loader {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.single-search[data-loading="true"] .single-search-input {
+    padding-right: 35px;
+}
+
+.single-search-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #d2d6de;
+    position: absolute;
+}
+
+.single-search-list>li {
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: 0.2s;
+}
+
+.single-search-list>li:hover {
+    background-color: #ededed;
+}
+
+.single-search-close {
+    display: block;
+    position: absolute;
+    right: 3px;
+    top: 6px;
+    color: gray;
+}
+
+.single-search[data-selected="false"] .single-search-close {
+    display: none;
+}
+
+.single-search[data-selected="true"] .single-search-input {
+    padding-right: 26px;
+    ;
+}
+.h-top-logo {
+    height: 56px;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: center;
+}
+.h-top-logo-sec{
+    display: flex;
+    align-items: center;
+}
+.h-top-logo-sec-title{
+    color: #000;
+    font-weight: 500;
+}

@@ -1,0 +1,6 @@
+ধ্রুবক logout(req, res) {
+    res.clearCookie("user", { path: "/" });
+    ফেরত res.redirect('/');
+}
+
+module.exports = { logout };
