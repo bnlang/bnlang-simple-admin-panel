@@ -1,4 +1,4 @@
-ধ্রুবক logout(req, res) {
+ফাংশন logout(req, res) {
     res.clearCookie("user", { path: "/" });
     ফেরত res.redirect('/');
 }

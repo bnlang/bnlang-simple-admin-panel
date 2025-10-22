@@ -1,4 +1,4 @@
-ধ্রুবক dashboardPage(req, res) {
+ফাংশন dashboardPage(req, res) {
     res.render('admin/dashboard', {
         title: 'Admin Dashboard', 
     });
